@@ -21,7 +21,8 @@ class SisModel extends Modelo_PDO{
 		$sth->bindValue(':origen',$origen, PDO::PARAM_INT);
 		$sth->bindValue(':destino',$destino, PDO::PARAM_INT);
 		$sth->bindValue(':fecha',$fecha, PDO::PARAM_STR);
-		$datos=$model->execute($sth);				
+		$datos=$model->execute($sth);
+
 		return $datos;	
 	}
 }

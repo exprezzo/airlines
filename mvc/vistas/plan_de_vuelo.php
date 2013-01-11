@@ -1,8 +1,9 @@
 <?php
-	$fkOrigen=$_REQUEST['fkOrigen'];
-	$fkDestino=$_REQUEST['fkDestino'];
-	$origen=$_REQUEST['origen'];
-	$destino=$_REQUEST['destino'];
+	$fkOrigen=empty($_REQUEST['fkOrigen'])? 0 : $_REQUEST['fkOrigen'];
+	$fkDestino=empty($_REQUEST['fkDestino'])? 0 : $_REQUEST['fkDestino'];
+	$origen=empty($_REQUEST['origen'])? '' : $_REQUEST['origen'];
+	$destino=empty($_REQUEST['destino'])? '' : $_REQUEST['destino'];
+	$numPasajeros=empty($_REQUEST['numPasajeros'])? '' : $_REQUEST['numPasajeros'];
 ?>
 <div class="pad_1">
 	<h2>Plan de Vuelo</h2>
@@ -43,7 +44,7 @@
 	  <div class="wrapper">
 		<p>Numero de Pasajeros:</p>
 		<div class="bg left">
-		  <input type="text" class="input input2" value="# Pasajeros" onBlur="if(this.value=='') this.value='# Pasajeros'" onFocus="if(this.value =='# Pasajeros' ) this.value=''">
+		  <input id="numPasajeros" name="numPasajeros" type="text" class="input input2" value="<?php echo $numPasajeros; ?>" placeholher='# Pasajeros'>
 		</div>
 		<a href="#" id="btnGo" class="button2" type="submit">go!</a>
 	</div>

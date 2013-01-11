@@ -1,15 +1,17 @@
+<script type="text/javascript" src="/js/lista_vuelos.js"></script>
+
 <script>
 $(function(){
-
-	$("#tabla_vuelos").wijgrid();
-	
-	
+	var vuelos=new ListaVuelos();
+	vuelos.init();
 });
 </script>
 <?php 
 $fechaSalida=$_REQUEST['fechaSalida'];
 $origen=$_REQUEST['origen'];
 $destino=$_REQUEST['destino'];
+$numPasajeros=empty($_REQUEST['numPasajeros'])? 0: $_REQUEST['numPasajeros'];
+
 ?>
 <br>
 Vuelos para el dia <b><?php echo $fechaSalida; ?></b> de: <label style="font-weight:bold; font-size:20px;"><?php echo $origen; ?></label> a <label style="font-weight:bold; font-size:20px;"><?php echo $destino; ?></label>
@@ -22,18 +24,21 @@ Vuelos para el dia <b><?php echo $fechaSalida; ?></b> de: <label style="font-wei
 ?>
 <table id="tabla_vuelos">
 	<thead>
-		<th>Hora Salida</th> <th>Numero de vuelo</th> <th>Costo</th>
+		<th>Hora Salida</th> <th>Numero de vuelo</th> <th>Costo U </th> <th>Total</th>
 	</thead>	  
 	 <tbody>   
 	 <?php foreach($this->vuelos as $vuelo){ ?>
     <tr>
 		<?php		
-			echo '<td>'.$vuelo['hora'].'</td>'.'<td>'.$vuelo['numVuelo'].'</td>'.'<td>'.$vuelo['costo'].'</td>';		
+			echo '<td>'.$vuelo['hora'].'</td>'.'<td>'.$vuelo['numVuelo'].'</td>'.'<td>'.$vuelo['costo'].'</td>'.'<td>'.( $numPasajeros * $vuelo['costo'] ).'</td>';		;		
 		?>	
     </tr>
+	
 	<?php	} ?>
   </tbody>
 </table>
+<br>
+<a href="#" id="btnContinuar" class="button2" type="submit">continuar!</a>
 <?php
 	}
 	
