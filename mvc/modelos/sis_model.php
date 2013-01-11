@@ -25,5 +25,58 @@ class SisModel extends Modelo_PDO{
 
 		return $datos;	
 	}
+	function getDatosVuelo($idVuelo){
+		$sql="SELECT v.*,o.nombre as origen,d.nombre as destino from vuelos v
+		LEFT JOIN destinos o ON o.id=v.fk_origen
+		LEFT JOIN destinos d ON d.id=v.fk_destino
+		where v.numVuelo=:idVuelo";
+		
+		
+		$model = $this;
+		$con=$model->getConexion();
+		$sth=$con->prepare($sql);				
+		$sth->bindValue(':idVuelo',$idVuelo, PDO::PARAM_INT);
+		$datos=$model->execute($sth);
+		return $datos;
+	}
+	function reservar($params){
+		
+		$nombre=$params['nombre'];
+		$email=$params['email'];
+		$telefono=$params['telefono'];
+		$numVuelo=$params['numVuelo'];
+		
+		$model=$this;
+		$sql='INSERT INTO reservaciones SET nombre=:nombre, email=:email, telefono=:telefono,fk_vuelo=:numVuelo';		
+		$con=$model->getConexion();
+		$sth=$con->prepare($sql);		
+		$sth->bindValue(':nombre',$nombre, PDO::PARAM_STR);
+		$sth->bindValue(':email',$email, PDO::PARAM_STR);
+		$sth->bindValue(':telefono',$telefono, PDO::PARAM_STR);
+		$sth->bindValue(':numVuelo',$numVuelo, PDO::PARAM_INT);
+		$datos=$model->execute($sth);
+		$id=$con->lastInsertId ();
+		
+		foreach($params['pasajeros'] as $pasajero){
+			$this->guardarPasajero($id, $pasajero);
+		}
+		
+		
+		
+		
+		return $id;	
+		
+	}
+	function guardarPasajero($idReservacion, $pasajero){
+		
+		$model=$this;
+		$sql='INSERT INTO pasajeros SET nombre=:nombre, apellidos=:apellido, fk_reservacion=:fk_reservacion';		
+		$con=$model->getConexion();
+		$sth=$con->prepare($sql);		
+		$sth->bindValue(':nombre',$pasajero['nombre'], PDO::PARAM_STR);
+		$sth->bindValue(':apellido',$pasajero['apellido'], PDO::PARAM_STR);
+		$sth->bindValue(':fk_reservacion',$idReservacion, PDO::PARAM_INT);
+		$datos=$model->execute($sth);
+	}
 }
 ?>

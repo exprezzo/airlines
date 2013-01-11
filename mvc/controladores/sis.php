@@ -8,6 +8,20 @@ class Sis extends Controlador{
 		return $this->modObj;
 	}
 	
+	function reservacion(){
+		
+		$model=$this->getModel();
+		$numRes=$model->reservar($_REQUEST);
+		
+		$datosVuelos=$model->getDatosVuelo( intval($_REQUEST['numVuelo']) );
+		//print_r($_REQUEST);
+		
+		$vista= $this->getVista();							
+		$vista->datosVuelo=$datosVuelos['datos'][0];
+		$vista->numRes=$numRes;
+		return $vista->mostrar( '/main' );
+	}
+	
 	function getOrigenes(){	
 		$model=$this->getModel();
 		
@@ -22,7 +36,13 @@ class Sis extends Controlador{
 		
 		$fkOrigen=$_REQUEST['fkOrigen'];
 		$fkDestino=$_REQUEST['fkDestino'];
-		$vuelos=$model->getVuelos($fkOrigen,$fkDestino);
+		$fechaSalida=$_REQUEST['fechaSalida'];
+		$date=DateTime::createFromFormat ( 'd/m/Y' , $fechaSalida );	
+		//print_r($date);
+		$fecha=$date->format('Y-m-d');
+		
+		
+		$vuelos=$model->getVuelos($fkOrigen,$fkDestino, $fecha);
 		
 		
 		$vista= $this->getVista();							

@@ -14,7 +14,10 @@ ListaVuelos.prototype.init=function(){
 	$('#btnContinuar').click(function(){
 		var numVuelo=me.selected[1];
 		var numPasajeros = $("#numPasajeros").val();
-		alert("Ha seleccionado el vuelo "+ numVuelo + " Ahora debe reservar para " + numPasajeros + " pasajeros");
+		//alert("Ha seleccionado el vuelo "+ numVuelo + " Ahora debe reservar para " + numPasajeros + " pasajeros");
+		$("#registrar input[name='numPasajeros']").val(numPasajeros);
+		$("#registrar input[name='numVuelo']").val(numVuelo);
+		$("#registrar").submit();
 		return false;
 	});
 }

@@ -41,7 +41,8 @@ class  Vista{
 		}else{					
 			$success=false;
 			$msg='No existe la vista: '.$rutaVista;
-			header("HTTP/1.0 404".$msg);
+			echo $msg;
+			//header("HTTP/1.0 404".$msg);
 		}
 				
 		return array(

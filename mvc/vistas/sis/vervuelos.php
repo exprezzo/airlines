@@ -39,6 +39,10 @@ Vuelos para el dia <b><?php echo $fechaSalida; ?></b> de: <label style="font-wei
 </table>
 <br>
 <a href="#" id="btnContinuar" class="button2" type="submit">continuar!</a>
+<form id="registrar" action="/sis/registrar_pasajeros" method="POST" >
+	<input type="text" name="numPasajeros">
+	<input type="text" name="numVuelo">
+</form>
 <?php
 	}
 	
