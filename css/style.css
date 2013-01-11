@@ -1,3 +1,10 @@
+.wijmo-wijcombobox-wrapper input{
+	background-color:white !important;
+}
+#fechaSalida , #fechaRegreso{
+	color:black !important;
+}
+
 article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
 	display:block;
 }

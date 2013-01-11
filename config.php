@@ -3,7 +3,7 @@ $APP_URL='http://'.$_SERVER['SERVER_NAME'];
 // 		BDD  
 $DB_CONFIG=array(
 	'DB_SERVER'	=>'localhost',
-	'DB_NAME'	=>'fastt',
+	'DB_NAME'	=>'airlines',
 	'DB_USER'	=>'root',
 	'DB_PASS'	=>''
 );

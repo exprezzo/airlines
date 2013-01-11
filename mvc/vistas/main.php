@@ -3,19 +3,49 @@
 <head>
 <title>America Airlines</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_italic_600.font.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_italic_400.font.js"></script>
-<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<link rel="stylesheet" href="/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/js/Myriad_Pro_italic_600.font.js"></script>
+<script type="text/javascript" src="/js/Myriad_Pro_italic_400.font.js"></script>
+<script type="text/javascript" src="/js/Myriad_Pro_400.font.js"></script>
+
+	
 <!--[if lt IE 9]>
 <script type="text/javascript" src="js/ie6_script_other.js"></script>
 <script type="text/javascript" src="js/html5.js"></script>
 <![endif]-->
+	<!--jQuery References-->
+	<!--link href="/js/jquery-ui-1.9.2.custom/css/flick/jquery-ui-1.9.2.custom.css" rel="stylesheet"-->	
+	<script src="/js/libs/jquery-1.8.3.js"></script>
+	<script src="/js/libs/jquery-ui-1.9.2.custom/jquery-ui-1.9.2.custom.js"></script>  
+	<!--Theme-->
+	<!--link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css"  /-->
+	<link href="/css/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
+	<!--link href="/css/themes/cobalt/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" /-->		
+	
+	<!--Wijmo Widgets CSS-->	
+	<link href="/js/libs/Wijmo.2.3.2/Wijmo-Complete/css/jquery.wijmo-complete.2.3.2.css" rel="stylesheet" type="text/css" />
+	<link href="/js/libs/Wijmo.2.3.2/Wijmo-Open/css/jquery.wijmo-open.2.3.2.css" rel="stylesheet" type="text/css" />			
+	<!--link href="/css/themes/blitzer/jquery-ui-1.9.2.custom.css" rel="stylesheet"-->	
+	<!--Wijmo Widgets JavaScript-->
+	<script src="/js/libs/Wijmo.2.3.2/Wijmo-Complete/js/jquery.wijmo-complete.all.2.3.2.min.js" type="text/javascript"></script>
+	<script src="/js/libs/Wijmo.2.3.2/Wijmo-Open/js/jquery.wijmo-open.all.2.3.2.min.js" type="text/javascript"></script>		
+	<!-- Gritter -->
+	<link href="/js/libs/Gritter-master/css/jquery.gritter.css" rel="stylesheet" type="text/css" />
+	<script src="/js/libs/Gritter-master/js/jquery.gritter.min.js" type="text/javascript"></script>
+	
+	
+	<script src="/js/plan_de_vuelo.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){
+			var plan=new PlanDeVuelo();
+			plan.init();
+		});		
+	</script>
 </head>
 <body id="page1">
 <!-- START PAGE SOURCE -->
@@ -32,33 +62,7 @@
             </ul>
           </nav>
           <nav>
-            <ul id="menu">
-				<?php
-					$idMenu_destinos='';
-					$idMenu_index='';
-					$idMenu_nosotros='';
-					$idMenu_contacto='';
-					switch($_PETICION->accion){
-						case 'index';
-							$idMenu_index='id="menu_active"';
-						break;
-						case 'destinos';
-							$idMenu_destinos='id="menu_active"';
-						break;
-						case 'nosotros';
-							$idMenu_nosotros='id="menu_active"';
-						break;
-						case 'contacto';
-							$idMenu_contacto='id="menu_active"';
-						break;
-					}
-					
-				?>
-              <li <? echo $idMenu_index; ?> ><a href="/index">Inicio</a></li>
-              <li <? echo $idMenu_destinos; ?> ><a href="/destinos">Destinos</a></li>
-              <li <? echo $idMenu_nosotros; ?> ><a href="/nosotros">Nosotros</a></li>
-              <li <? echo $idMenu_contacto; ?> ><a href="/contacto">Contacto</a></li>
-            </ul>
+			<?php $this->mostrar('/menu'); ?>
           </nav>
         </div>
       </div>
@@ -75,69 +79,12 @@
 <div class="main">
   <section id="content">
     <article class="col1">
-      <div class="pad_1">
-        <h2>Plan de Vuelo</h2>
-        <form id="form_1" action="#" method="post">
-          <div class="wrapper pad_bot1">
-            <div class="radio marg_right1">
-              <input type="radio" name="name1">
-               Redondo<br>
-              </div>
-            <div class="radio">
-              <input type="radio" name="name1">
-              Sencillo<br>
-			</div>
-          </div>
-          <div class="wrapper"> Origen:
-            <div class="bg">
-              <input type="text" class="input input1" value="Ciudad o Aeropuerto" onBlur="if(this.value=='') this.value='Ciudad o Aeropuerto'" onFocus="if(this.value =='Ciudad o Aeropuerto' ) this.value=''">
-            </div>
-          </div>
-          <div class="wrapper"> Destino:
-            <div class="bg">
-              <input type="text" class="input input1" value="Ciudad o Aeropuerto" onBlur="if(this.value=='') this.value='Ciudad o Aeropuerto'" onFocus="if(this.value =='Ciudad o Aeropuerto' ) this.value=''">
-            </div>
-          </div>
-          <div class="wrapper"> Fecha y Hora de salida:
-            <div class="wrapper">
-              <div class="bg left">
-                <input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''">
-              </div>
-              <div class="bg right">
-                <input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='') this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''">
-              </div>
-            </div>
-          </div>
-          <div class="wrapper"> Fecha y Hora de regreso:
-            <div class="wrapper">
-              <div class="bg left">
-                <input type="text" class="input input2" value="mm/dd/yyyy " onBlur="if(this.value=='') this.value='mm/dd/yyyy '" onFocus="if(this.value =='mm/dd/yyyy ' ) this.value=''">
-              </div>
-              <div class="bg right">
-                <input type="text" class="input input2" value="12:00am" onBlur="if(this.value=='') this.value='12:00am'" onFocus="if(this.value =='12:00am' ) this.value=''">
-              </div>
-            </div>
-          </div>
-          <div class="wrapper">
-            <p>Numero de Pasajeros:</p>
-            <div class="bg left">
-              <input type="text" class="input input2" value="# Pasajeros" onBlur="if(this.value=='') this.value='# Pasajeros'" onFocus="if(this.value =='# Pasajeros' ) this.value=''">
-            </div>
-            <a href="#" class="button2">go!</a> </div>
-        </form>
-        <h2>Noticias Recientes</h2>
-        <p class="under"><a href="#" class="link1">Noticias</a><br>
-          Diciembre 5, 2012</p>
-        <p class="under"><a href="#" class="link1">Noticias</a><br>
-          Diciembre 12, 2012</p>
-        <p><a href="#" class="link1">Noticias</a><br>
-          Diciembre 14, 2012</p>
-      </div>
+		<?php $this->mostrar('/plan_de_vuelo'); ?>
     </article>
     <article class="col2 pad_left1">
       <?php 	
 		global $_PETICION;		
-		$this->mostrar('/'.$_PETICION->accion); 
+		$this->mostrar('/'.$_PETICION->controlador.'/'.$_PETICION->accion); 
 		?>
     </article>
   </section>
