@@ -1,6 +1,6 @@
 <?php
-$APP_URL='http://'.$_SERVER['SERVER_NAME']; 
-// 		BDD  
+//$APP_URL='http://'.$_SERVER['SERVER_NAME']; 
+
 $DB_CONFIG=array(
 	'DB_SERVER'	=>'localhost',
 	'DB_NAME'	=>'airlines',
@@ -8,18 +8,9 @@ $DB_CONFIG=array(
 	'DB_PASS'	=>''
 );
 
-//		USER WIDGET  
-$FB_CONFIG=array(
-	'FB_APP_ID' 			=> '',
-	'FB_APP_SECRET' 		=> '',
-	'FB_MY_URL' 			=> $APP_URL.'/auth/fblogin',
-	'FB_LOGOUT_ABSOLUTE' 	=> $APP_URL.'/auth/logout'
-);
-
-// 		NUCLEO DEL MVC  
+// CONFIGURA EL MODULO POR DEFAULT
 define ("PATH_MVC",'../mvc/');
-define ("VISTAS_PATH",		 PATH_MVC.'vistas/');
-define ("PATH_CONTROLADORES",PATH_MVC.'controladores/');
 
+// CONFIGURA LA RUTA DEL NUCLEO
 define ("PATH_NUCLEO",'../mvc_core/');
 ?>

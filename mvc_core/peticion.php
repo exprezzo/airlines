@@ -45,10 +45,8 @@ class Peticion{
 			case 4:	// escribió el modulo, controlador y la accion
 				$modulo		=$xp[1];
 				$controlador=$xp[2];
-				$accion		=$xp[3];
-				
-			break;
-			
+				$accion		=$xp[3];				
+			break;			
 			default:
 				//throw new Exception($url. " No reconocida" );
 				header("HTTP/1.0 404 ".$url. " No reconocida");
@@ -57,8 +55,7 @@ class Peticion{
 		
 		$this->controlador = $controlador;
 		$this->accion 	   = $accion;		
-		$this->modulo 	   = $modulo;		
-		
+		$this->modulo 	   = $modulo;				
 	}
 }
 ?>

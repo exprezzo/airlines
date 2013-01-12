@@ -29,7 +29,7 @@ class  Vista{
 			$controlador.= !empty($_PETICION->controlador)?  '/' : '';
 			$vista=$controlador.$_PETICION->accion;
 		}
-		$rutaVista=VISTAS_PATH.$vista.'.php';		
+		$rutaVista=$_PETICION->basePath.'vistas/'.$vista.'.php';		
 		$vista_existe = ( file_exists($rutaVista) ) ? true : false;
 		
 		if ($vista_existe) {

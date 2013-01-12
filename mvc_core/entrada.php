@@ -4,33 +4,37 @@
 	require_once '../config.php';		
 	require_once 'despachador.php';		
 	
+	define ("VISTAS_PATH",		 PATH_MVC.'vistas/');
+	define ("PATH_CONTROLADORES",PATH_MVC.'controladores/');
+
 	$despachador = new Despachador();
 	
-	try{
-		/*
-		$despachador->getPeticion() es SINGLETON (o deberia serlo)
-		*/
-		
-		$_PETICION=new Peticion();
+	try{		
+		$_PETICION=new Peticion(); //Analiza el url
+
+		if ( !empty($_PETICION->modulo) ){
+			$rutaControlador='../'.$_PETICION->modulo.'/controladores/'.$_PETICION->controlador.'.php';
+			$_PETICION->basePath='../'.$_PETICION->modulo.'/';
+		}else{
+			//carga el controlador del modulo default
+			$rutaControlador=PATH_CONTROLADORES.$_PETICION->controlador.'.php';
+			$_PETICION->basePath=PATH_MVC;
+		}
 				
-		//El controlador default u otro creado para el sistema
-		if ( file_exists(PATH_CONTROLADORES.$_PETICION->controlador.'.php') ){
-			require_once (PATH_CONTROLADORES.$_PETICION->controlador.'.php');
+		if ( file_exists($rutaControlador) ){
+			require_once ($rutaControlador);
+		}else{
+			$respuesta=array(
+				'success'=>false,
+				'msg'	 =>'El controlador '.$_PETICION->controlador.' no existe',
+			);				
+			header("HTTP/1.0 404 Not Found".'El controlador '.$_PETICION->controlador.' no existe');
 		}
-		
-		$result=$despachador->despacharPeticion($_PETICION);
-		
-		if ( $result['success']==false ) {
-			echo $result['msg'];
-			//$vista= new Vista('asd');
-			//$vista->mostrar('asd');
-			
-			
-			//PENDIENTE: registrar el error   -------
-		}
+				
+		$despachador->despacharPeticion($_PETICION);
 	}catch(Exception $e){
 		//echo 'Ups. <br>';
-		echo $e->getMessage();
+		echo 'Exception: '.$e->getMessage();
 		//echo "El sistema ha sufrido un fallo, consulte con el administrador del sistema";
 		//PENDIENTE: registrar la exception   -------		
 	}
