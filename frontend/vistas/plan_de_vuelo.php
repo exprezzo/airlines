@@ -3,7 +3,7 @@
 	$fkDestino=empty($_REQUEST['fkDestino'])? 0 : $_REQUEST['fkDestino'];
 	$origen=empty($_REQUEST['origen'])? '' : $_REQUEST['origen'];
 	$destino=empty($_REQUEST['destino'])? '' : $_REQUEST['destino'];
-	$numPasajeros=empty($_REQUEST['numPasajeros'])? '' : $_REQUEST['numPasajeros'];
+	$numPasajeros=empty($_REQUEST['numPasajeros'])? 1 : $_REQUEST['numPasajeros'];
 ?>
 <div class="pad_1">
 	<h2>Plan de Vuelo</h2>

@@ -38,11 +38,12 @@ class  Vista{
 			$this->despuesdeMostrar($vista);
 			$success=true;
 			$msg='accion render ejecutada con éxito';			
-		}else{					
+		}else{
+			//Aqui deberia funcionar con eventos
 			$success=false;
 			$msg='No existe la vista: '.$rutaVista;
 			echo $msg;
-			//header("HTTP/1.0 404".$msg);
+			header("HTTP/1.0 404".$msg);
 		}
 				
 		return array(

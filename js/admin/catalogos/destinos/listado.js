@@ -1,4 +1,4 @@
-﻿var ListaReservaciones=function(){
+﻿var ListaDestinos=function(){
 	this.init=function(tabId){
 		tabId = '#' + tabId;
 		this.tabId = tabId;
@@ -8,8 +8,8 @@
 		$('div'+tabId).css('border','0 1px 1px 1px');
 
 		var tab=$('a[href="'+tabId+'"]');
-		tab.html('Reservaciones');
-		tab.addClass('listaReservaciones');
+		tab.html('Destinos');
+		tab.addClass('listaDestinos');
 				
 		this.configurarGrid(tabId);
 	};
@@ -28,18 +28,13 @@
 		//var totalRows=<?php //echo isset($this->total)?$this->total: 0 ?>;
 		var fields=[
 			{ name: "id"  },
-			{ name: "nombre"},
-			{ name: "email"},			
-			{ name: "telefono"},
-			{ name: "origen"},
-			{ name: "destino"},
-			{ name: "vuelo"}
+			{ name: "nombre"}			
 		];
 		var dataReader = new wijarrayreader(fields);
 
 		var dataSource = new wijdatasource({
 			proxy: new wijhttpproxy({
-				url: "/admin/reservaciones/paginar",
+				url: "/admin/destinos/paginar",
 				dataType: "json"
 			}),
 			dynamic:true,			
@@ -52,7 +47,7 @@
 			dataReader.read(datasource);
 		};				
 		this.dataSource=dataSource;
-		var grid=$("#lista_de_reservaciones");
+		var grid=$("#lista_de_destinos");
 
 		
 		var me=this;
@@ -67,12 +62,7 @@
 			data:dataSource,
 			columns: [ 
 			{ dataKey: "id", visible:false, headerText: "COD" },			
-			{dataKey: "nombre", headerText: "Nombre" }, 
-			{dataKey: "email", headerText: "Email" },
-			{dataKey: "telefono", headerText: "Telefono" },
-			{dataKey: "vuelo", headerText: "Vuelo" },
-			{dataKey: "origen", headerText: "Origen" },
-			{dataKey: "destino", headerText: "Destino" }
+			{dataKey: "nombre", headerText: "Nombre" }			
 			],
 			rowStyleFormatter: function(args) {
 				// if (args.dataRowIndex>-1)
@@ -109,13 +99,13 @@
 		} });
 	};
 }
-ListaReservaciones.prototype.eliminar=function(){
+ListaDestinos.prototype.eliminar=function(){
 	
 	var id = this.selected.id;
 	var me=this;
 	$.ajax({
 			type: "POST",
-			url: '/pedidoi/eliminar',
+			url: '/destinos/eliminar',
 			data: { id: id}
 		}).done(function( response ) {		
 			var resp = eval('(' + response + ')');

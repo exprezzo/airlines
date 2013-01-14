@@ -14,7 +14,8 @@ if ( !isset($_SESSION['isLoged'])|| $_SESSION['isLoged']!=true ){
 	<script src="/js/libs/jquery-ui-1.9.2.custom/jquery-ui-1.9.2.custom.js"></script>  
 	<!--Theme-->
 	<!--link href="http://cdn.wijmo.com/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css"  /-->
-	<link href="/css/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
+	<link href="/css/themes/<?php echo TEMA; ?>/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
+	<link href="/css/mods/<?php echo TEMA; ?>/mods.css" rel="stylesheet" type="text/css" />		
 	<!--link href="/css/themes/cobalt/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" /-->		
 	
 	<!--Wijmo Widgets CSS-->	
@@ -94,10 +95,14 @@ if ( !isset($_SESSION['isLoged'])|| $_SESSION['isLoged']!=true ){
 <body style="padding:0; margin:0;">	
 	<div id="splitter">
 		<div class="main_header">
-			<div style="padding:0px 0 0px 20px; float:left;">
-				<a href="/admin/general/menu" id="lnkMenu" tablink="true" ><h1>America Airlines</h1></a>
-			</div>
-					
+			
+			<div style="padding:0px 0 0px 0px; float:left;" class="nombre_empresa_header">
+				<!--a href="/admin/general/menu" id="lnkMenu" tablink="true" ><h1>America Airlines</h1></a-->
+				<div class="header ui-state-default" style="text-align:center;padding-left: 13px;
+padding-right: 15px;
+margin-left: -4px;
+border-bottom-right-radius: 10px;"><a href="/index"><h2 style="margin:8px;"><?php echo NOMBRE_APL; ?><a></h2></div>			
+			</div>	
 			<div class="user_widget" >
 				<a class ="left ui-state-default" href="/admin/user/perfil" tablink="true">Perfil</a>
 				<a class ="right ui-state-default" href="/admin/user/logout">Salir</a>
@@ -105,15 +110,15 @@ if ( !isset($_SESSION['isLoged'])|| $_SESSION['isLoged']!=true ){
 			
 			<div class="accesos_directos">
 				<div class="item" style="">
-					<a href="/admin/destinos/listar" tablink="true" ><img width="60px" src="/images/admin/aero/airport.png" /><label style='padding-left:20px;'>Menu</label></a>
+					<a href="/admin/destinos/listar" tablink="true" ><img width="60px" src="/images/admin/token_light_iconpack/avira.png" /><label style='padding-left:20px;'>Menu</label></a>
 				</div>
 				
 				<div class="item" style="float:right;margin-right:20px;">
-					<a href="/admin/vuelos/listar" tablink="true" ><img width="60px" src="/images/admin/aero/tito_plane.png" /><label style='padding-left:10px;'>Productos</label></a>
+					<a href="/admin/vuelos/listar" tablink="true" ><img width="60px" src="/images/admin/token_light_iconpack/airplane.png" /><label style='padding-left:10px;'>Productos</label></a>
 				</div>
 				
 				<div class="item" style="float:right;margin-right:20px;">
-					<a href="/admin/reservaciones/listar" tablink="true" ><img width="60px" src="/images/admin/aero/plane_tickets.png" /><label>Nuevo Pedido</label></a>
+					<a href="/admin/reservaciones/listar" tablink="true" ><img width="60px" src="/images/admin/token_light_iconpack/htc_touch.png" /><label>Nuevo Pedido</label></a>
 				</div>
 				
 			</div>

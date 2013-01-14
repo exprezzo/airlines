@@ -1,0 +1,16 @@
+body{
+	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
+	background: #F8E088 url(images/stripe2.png);
+}
+
+.main_header{	
+	background: white url(/images/backgrounds/cielo.jpg);
+}
+
+  .accesos_directos a{
+	opacity:.3;
+}
+
+.user_widget a:hover, .nombre_empresa_header:hover, .accesos_directos a:hover{
+	opacity:1;
+}

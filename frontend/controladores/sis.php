@@ -1,5 +1,5 @@
 <?
-require_once '../mvc/modelos/sis_model.php';
+require_once PATH_MVC.'/modelos/sis_model.php';
 class Sis extends Controlador{	
 	function getModel(){		
 		if ( !isset($this->modObj) ){						
