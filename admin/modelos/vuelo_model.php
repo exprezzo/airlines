@@ -10,7 +10,9 @@ class VueloModel extends Modelo_PDO{
 		$datos=$model->execute($sth);
 		
 		$total=$datos['datos'][0]['total'];		
-		$sql='select * from vuelos LIMIT :start,:limit';		
+		$sql='SELECT v.id,o.nombre as origen, d.nombre as destino, v.fecha,v.costo,v.numVuelo, v.asientos_disponibles From vuelos v
+left join destinos o ON o.id=v.fk_origen
+left join destinos d ON d.id=v.fk_destino LIMIT :start,:limit';		
 		$con=$model->getConexion();
 		$sth=$con->prepare($sql);
 		$sth->bindValue(':start',$start, PDO::PARAM_INT);		

@@ -10,11 +10,56 @@
 		var tab=$('a[href="'+tabId+'"]');
 		tab.html('Vuelos');
 		tab.addClass('listaVuelos');
-				
+		this.configurarToolbar(tabId);
 		this.configurarGrid(tabId);
 	};
 
-	
+	this.configurarToolbar=function(tabId){
+		var me=this;
+		
+		$(tabId+ " .tbVuelos").wijribbon({
+			click: function (e, cmd) {
+				switch(cmd.commandName){
+					case 'nuevo':
+						TabManager.add('/admin/pedidoi/nuevo','Nuevo Pedido');				
+					break;
+					case 'editar':
+						if (me.selected!=undefined){													
+							TabManager.add('/admin/pedidoi/getPedido','Editar Pedido',me.selected.id);
+						}
+					break;
+					case 'eliminar':
+						if (me.selected==undefined) return false;
+						var r=confirm("¿Eliminar el elemento?");
+						if (r==true){
+						  me.eliminar();
+						}
+					break;
+					case 'refresh':
+						var fi=$('#tabs '+tabId+' .txtFechaI').val();
+						//alert(fi);
+						var gridPedidos=$(me.tabId+" #lista_de_vuelos");
+						gridPedidos.wijgrid('ensureControl', true);
+					break;
+					default:
+						$.gritter.add({
+							position: 'bottom-left',
+							title:"Informaci&oacute;n",
+							text: "Acciones del toolbar en construcci&oacute;n",
+							image: '/images/info.png',
+							class_name: 'my-sticky-class'
+						});
+					break;
+					case 'imprimir':
+						alert("Imprimir en construcción");						
+					break;
+				}
+				
+			}
+		});
+		$('#tabs '+tabId+' .txtFechaI').wijinputdate({ dateFormat: 'd/M/yyyy', showTrigger: true});	
+		$('#tabs '+tabId+' .txtFechaF').wijinputdate({ dateFormat: 'd/M/yyyy', showTrigger: true});	
+	};
 	this.configurarGrid=function(tabId){
 		var pageSize=10;
 		var hContainer = $('#tabs').height();
@@ -31,7 +76,9 @@
 			{ name: "origen"},
 			{ name: "destino"},
 			{ name: "fecha"},
-			{ name: "vuelo"}
+			{ name: "costo"},
+			{ name: "asientos_disponibles"},
+			{ name: "numVuelo"}
 		];
 		var dataReader = new wijarrayreader(fields);
 
@@ -65,10 +112,12 @@
 			data:dataSource,
 			columns: [ 
 			{ dataKey: "id", visible:false, headerText: "ID" },
-			{dataKey: "vuelo", headerText: "Vuelo" },
+			{dataKey: "numVuelo", headerText: "Vuelo" },
 			{dataKey: "origen", headerText: "Origen" },
 			{dataKey: "destino", headerText: "Destino" },
-			{dataKey: "fecha", headerText: "Fecha" }
+			{dataKey: "fecha", headerText: "Fecha" },
+			{dataKey: "costo", headerText: "Costo" },
+			{dataKey: "asientos_disponibles", headerText: "asientos_disponibles" }
 			
 			
 			],

@@ -4,7 +4,7 @@ require_once $rutaModelos.'vuelo_model.php';
 class Vuelos extends Controlador{
 	function getModel(){
 		if ( !isset($this->modObj) ){
-			$this->modObj = new DestinoModel();
+			$this->modObj = new VueloModel();
 		}
 		return $this->modObj;
 	}

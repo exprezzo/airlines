@@ -16,6 +16,10 @@
 </script>
 
 <div style="">	
+	<?php
+		global $_PETICION;
+		$this->mostrar($_PETICION->controlador.'/lista_toolbar');
+	?>
 	<table id="lista_de_reservaciones">
 		<thead>
 			<th>Cod</th>		
