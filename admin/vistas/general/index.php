@@ -89,6 +89,13 @@ if ( !isset($_SESSION['isLoged'])|| $_SESSION['isLoged']!=true ){
 			width: 100%;
 			border: 0;
 		}
+		
+		.accesos_directos a, .user_widget a{
+			transition:all .3s;
+				-moz-transition:all .3s; /* Firefox 4 */
+				-webkit-transition:all .3s; /* Safari and Chrome */
+				-o-transition:all .3s; /* Opera */		
+		}
 	</style>
 	
 </head>

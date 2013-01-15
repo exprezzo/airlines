@@ -11,7 +11,7 @@ $DB_CONFIG=array(
 // Configuracion del ssitio
 define ("NOMBRE_APL",'AMERICA AIRLINES');
 define ("TEMA",'rocket');
-
+define ("PASS_AES",'airA3s');
 /*
 Temas disponibles:   (la intencion es agregar todos los temas de jqureyui y de wijmo, pero no queremos ser dependientes de sus servicios web)
 aristo

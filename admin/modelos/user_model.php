@@ -1,3 +1,4 @@
+
 <?php
 class UserModel extends Modelo_PDO{
 	var $tabla='system_users';	
@@ -7,22 +8,30 @@ class UserModel extends Modelo_PDO{
 		//si no, se busca por username y pass
 		
 		if ( filter_var($username, FILTER_VALIDATE_EMAIL) ) {
-			$sql = 'SELECT * FROM '.$this->tabla.' WHERE email=:username and :pass=AES_DECRYPT(pass, "m3me1234z")';
+			$sql = 'SELECT * FROM '.$this->tabla.' WHERE email=:username and :pass=AES_DECRYPT(pass, :PASS_AES)';
 		}else{
-			$sql = 'SELECT * FROM '.$this->tabla.' WHERE nick=:username and :pass=AES_DECRYPT(pass, "m3me1234z")';
-		}									
-		
+			$sql = 'SELECT * FROM '.$this->tabla.' WHERE nick=:username and :pass=AES_DECRYPT(pass, :PASS_AES)';
+		}											
 		$con = $this->getConexion();
 		$sth = $con->prepare($sql);		
 		$sth->bindValue(':username',$username, PDO::PARAM_STR);
 		$sth->bindValue(':pass',$pass, PDO::PARAM_STR);
+		$sth->bindValue(':PASS_AES',PASS_AES, PDO::PARAM_STR);
 		
-		$sth->execute();
-		$modelos = $sth->fetchAll(PDO::FETCH_ASSOC);
+		$exito = $sth->execute();
 		
-		if ( empty($modelos) ){
-			return array('success'=>false);
+		if ($exito!==true){
+		// error en la consulta				
+			$error=$sth->errorInfo();
+			$resp=array(
+				'success'=>false,
+				'msg'=>$error[2]
+			);
+			print_r($resp);
+			return $resp; 
 		}
+		
+		$modelos = $sth->fetchAll(PDO::FETCH_ASSOC);		
 		
 		if ( sizeof($modelos) > 1 ){
 			throw new Exception("El usuario está duplicado"); //TODO: agregar numero de error, crear una exception MiEscepcion
@@ -71,7 +80,7 @@ class UserModel extends Modelo_PDO{
 	function registrar($nick, $email, $pass,$nombre){
 		$dbh=$this->getConexion();
 		
-		$sql='INSERT INTO system_users SET nick=:nick , pass=AES_ENCRYPT(:pass, "m3me1234z"), name=:name,email=:email';
+		$sql='INSERT INTO system_users SET nick=:nick , pass=AES_ENCRYPT(:pass, '.PASS_AES.'), name=:name,email=:email';
 		$sth = $dbh->prepare($sql);		
 		
 		$sth->bindValue(':nick', $nick,  PDO::PARAM_STR);							
@@ -210,7 +219,7 @@ class UserModel extends Modelo_PDO{
 		$this->registrarEnSesion($user);
 	}
 	function compruebaPass($id,$pass){
-		$sql = 'SELECT * FROM '.$this->tabla.' WHERE id=:id and :pass=AES_DECRYPT(pass, "m3me1234z")';
+		$sql = 'SELECT * FROM '.$this->tabla.' WHERE id=:id and :pass=AES_DECRYPT(pass, '.PASS_AES.')';
 		
 		$con = $this->getConexion();
 		$sth = $con->prepare($sql);		
@@ -240,7 +249,7 @@ class UserModel extends Modelo_PDO{
 	}
 	
 	function updatePass($id,$pass){
-		$sql = 'UPDATE '.$this->tabla.' SET pass=AES_ENCRYPT(:pass, "m3me1234z") WHERE id=:id ';
+		$sql = 'UPDATE '.$this->tabla.' SET pass=AES_ENCRYPT(:pass, '.PASS_AES.') WHERE id=:id ';
 		
 		$con = $this->getConexion();
 		$sth = $con->prepare($sql);		

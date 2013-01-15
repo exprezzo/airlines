@@ -1,4 +1,4 @@
-var tab_counter = 1; 
+ var tab_counter = 1; 
 var TabManager={
 	init:function(target){
 		$tabs = $(target).wijtabs({
@@ -27,7 +27,7 @@ var TabManager={
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: { tabId:tabId, pedidoId:id }
+			data: { tabId:tabId, objId:id }
 		}).done(function( response ) {			
 			$('#'+ tabId ).html(response);				
 			$tabs.wijtabs('select',tabId);			
