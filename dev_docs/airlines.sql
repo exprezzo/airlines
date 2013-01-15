@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2013-01-12 01:53:26
+Date: 2013-01-14 18:48:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,13 +44,17 @@ CREATE TABLE `pasajeros` (
   `nombre` char(255) NOT NULL,
   `apellidos` char(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pasajeros
 -- ----------------------------
 INSERT INTO `pasajeros` VALUES ('115', '71', 'Cesar', 'Bibriesca');
 INSERT INTO `pasajeros` VALUES ('116', '72', 'Gerardo', 'Ortiz');
+INSERT INTO `pasajeros` VALUES ('117', '73', 'a1', 'a1');
+INSERT INTO `pasajeros` VALUES ('118', '73', 'b1', '');
+INSERT INTO `pasajeros` VALUES ('119', '73', '', '');
+INSERT INTO `pasajeros` VALUES ('120', '87', 'cesa', 'bibriesca');
 
 -- ----------------------------
 -- Table structure for `reservaciones`
@@ -63,13 +67,28 @@ CREATE TABLE `reservaciones` (
   `nombre` char(255) DEFAULT NULL,
   `fk_vuelo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reservaciones
 -- ----------------------------
 INSERT INTO `reservaciones` VALUES ('71', 'cesar@email.com', '9848034', 'cesar', '251');
 INSERT INTO `reservaciones` VALUES ('72', 'gerardo@email.com', '9801010', 'Gerardo', '252');
+INSERT INTO `reservaciones` VALUES ('73', 'test@email.com', '66778890', 'test', '250');
+INSERT INTO `reservaciones` VALUES ('74', null, '123', 'a', null);
+INSERT INTO `reservaciones` VALUES ('75', null, '123', 'a', null);
+INSERT INTO `reservaciones` VALUES ('76', null, '123', 'b', null);
+INSERT INTO `reservaciones` VALUES ('77', null, '123', 'b', null);
+INSERT INTO `reservaciones` VALUES ('78', null, '123', 'c', null);
+INSERT INTO `reservaciones` VALUES ('79', null, '123', 'c', null);
+INSERT INTO `reservaciones` VALUES ('80', null, '123', 'd', null);
+INSERT INTO `reservaciones` VALUES ('81', null, '123', 'd', null);
+INSERT INTO `reservaciones` VALUES ('82', null, '123', 'e', null);
+INSERT INTO `reservaciones` VALUES ('83', null, '123', 'e', null);
+INSERT INTO `reservaciones` VALUES ('84', null, '123', 'f', null);
+INSERT INTO `reservaciones` VALUES ('85', null, '123', 'f', null);
+INSERT INTO `reservaciones` VALUES ('86', null, '123', 'g', null);
+INSERT INTO `reservaciones` VALUES ('87', 'emal', '22534', 'nombre', '252');
 
 -- ----------------------------
 -- Table structure for `system_users`
@@ -94,7 +113,7 @@ CREATE TABLE `system_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nick` (`nick`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_users
@@ -106,6 +125,7 @@ INSERT INTO `system_users` VALUES ('', 0x88C6F87C8E0DFFBA20CA68680FA1311A, '', '
 INSERT INTO `system_users` VALUES ('username', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'asdf@sadf.com', '1', null, '5', 'name', null, null, 'asdf', '1', '1', '1', '1', null);
 INSERT INTO `system_users` VALUES ('zesar2', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'zesar2@test.com', '1', null, '6', 'Zesar 2', null, null, null, '1', '1', '1', '0', null);
 INSERT INTO `system_users` VALUES ('fouser', 0x27BE5E2F67AD42313ECEF2FD0CCCFBAB, 'userx2@email.com', '1', null, '10', '0', null, null, null, '1', '1', '1', '0', null);
+INSERT INTO `system_users` VALUES ('TEST', 0xD4D3EDF12F5E066B347360AE1A957C13, 'test@test.com', '1', null, '12', '0', null, null, null, '1', '1', '1', '0', null);
 
 -- ----------------------------
 -- Table structure for `vuelos`
