@@ -68,10 +68,15 @@ Vuelos.Edicion= function(){
 				icon='/images/yes.png';
 				title= 'Success';
 				
-				// tab.find('.txtId').val(resp.datos.id),
+				tab.find('h2.titulo').html('Vuelo '+resp.datos.numVuelo);
 				// tab.find('.txtFkAlmacen').val(resp.datos.fk_almacen),
 				// tab.find('.txtFecha').wijinputdate('option','date', resp.datos.fecha); 
-				// $('a[href="'+me.tabId+'"]').html('Pedido-'+resp.datos.nombreAlmacen+' ID: '+resp.datos.id);		
+				var objId = 'admin/vuelos/editar'+'?id='+resp.datos.id;
+				objId = objId.toLowerCase();								
+				$(me.tabId ).attr('objId',objId);	
+		
+				 $('a[href="'+me.tabId+'"]').html('Vuelo '+resp.datos.numVuelo);		
+				 
 				
 			}else{
 				icon= '/images/error.png';

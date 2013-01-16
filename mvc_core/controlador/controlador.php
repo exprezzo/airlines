@@ -39,7 +39,27 @@ class Controlador{
 	function mostrarError($errores){
 		return $this->mostrarErrores($errores);		
 	}				
-	
+	function eliminar(){
+		$modObj= $this->getModel();
+		$params=array();
+		
+		if ( !isset($_POST['id']) ){
+			$id=$_POST['datos'];
+		}else{
+			$id=$_POST['id'];
+		}
+		$params['id']=$id;
+		
+		$res=$modObj->borrar($params);
+		$respuesta = array(
+			'success'=>$res,
+			'msg'=>'Registro Eliminado'
+		);
+		
+		echo json_encode($respuesta);
+		
+		return $respuesta;
+	}
 	function getModel(){		
 		if ( !isset($this->modObj) ){						
 			$this->modObj = new Modelo_PDO();	

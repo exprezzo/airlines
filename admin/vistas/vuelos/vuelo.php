@@ -29,10 +29,13 @@ margin-left: -150px;
 		height: 50px;
 vertical-align: bottom;
 padding-top: 12px;
-
+		cursor:pointer;
+		
 		
 		
 	}
+	
+	
 </style>
 <script src="/js/admin/catalogos/vuelos/edicion.js" /> 
 <script >
@@ -55,7 +58,7 @@ padding-top: 12px;
 		<?php 
 		$titulo = empty($vuelo['numVuelo'])? 'NUEVO' : $vuelo['numVuelo'];
 		?>
-		<h2>Vuelo <?php echo $titulo ?></h2>
+		<h2 class="titulo">Vuelo <?php echo $titulo ?></h2>
 		<div class="buttons ">
 			<div>
 				<button name="saveForm" class="btTxt submit saveForm"  value="Submit">Guardar</button>

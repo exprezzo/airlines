@@ -30,6 +30,8 @@ class VueloModel extends Modelo_PDO{
 			$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_origen",$fk_origen,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_destino",$fk_destino,PDO::PARAM_INT);					
+			$exito = $sth->execute();
+			$id=$dbh->lastInsertId();
 		}else{
 			//	         ACTUALIZAR
 			$sql='UPDATE '.$this->tabla.' SET 
@@ -47,11 +49,11 @@ class VueloModel extends Modelo_PDO{
 			$sth->bindValue(":fk_origen",$fk_origen,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_destino",$fk_destino,PDO::PARAM_INT);			
 			$sth->bindValue(":id",$id,PDO::PARAM_INT);					
-			
+			$exito = $sth->execute();
 
 		}
 			
-		$exito = $sth->execute();
+		
 		
 		if ($exito!==true){
 		// error en la consulta				
@@ -63,9 +65,12 @@ class VueloModel extends Modelo_PDO{
 			return $resp; 
 		}
 		
+		
+		$mod=$this->obtener( array('id'=>$id) );
 		$resp=array(
 			'success'=>true,
-			'msg'=>'Vuelo guardado'
+			'msg'=>'Vuelo guardado',
+			'datos'=>$mod['datos'][0]			
 		);
 		return $resp; 
 		

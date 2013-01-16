@@ -275,7 +275,7 @@ ListaVuelos.prototype.eliminar=function(){
 	var me=this;
 	$.ajax({
 			type: "POST",
-			url: '/destinos/eliminar',
+			url: '/admin/vuelos/eliminar',
 			data: { id: id}
 		}).done(function( response ) {		
 			var resp = eval('(' + response + ')');
@@ -284,7 +284,7 @@ ListaVuelos.prototype.eliminar=function(){
 			if ( resp.success == true	){
 				icon='/images/yes.png';
 				title= 'Success';				
-				var gridPedidos=$(me.tabId+" #lista_pedidos_internos");				
+				var gridPedidos=$(me.tabId+" #lista_de_vuelos");				
 				gridPedidos.wijgrid('ensureControl', true);  
 			}else{
 				icon= '/images/error.png';
