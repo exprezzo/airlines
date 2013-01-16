@@ -80,7 +80,7 @@ class VueloModel extends Modelo_PDO{
 		//return parent::obtener($params);
 		$id=$params['id'];
 		
-		$sql = 'SELECT v.id,o.nombre as origen, d.nombre as destino, v.fecha,v.costo,v.numVuelo, v.asientos_disponibles,fk_origen,fk_destino,"12:00" as hora
+		$sql = 'SELECT v.id,o.nombre as origen, d.nombre as destino, v.fecha,v.costo,v.numVuelo, v.asientos_disponibles,fk_origen,fk_destino,fecha as  hora
 		FROM '.$this->tabla.' v 
 		left join destinos o ON o.id=v.fk_origen
 		left join destinos d ON d.id=v.fk_destino WHERE v.id=:id';
