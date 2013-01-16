@@ -15,6 +15,23 @@ Vuelos.Edicion= function(){
 		var tab=$('a[href="'+tabId+'"]');		
 		tab.addClass('frmVuelo');
 		
+		$(tabId+" .txtHora").wijinputdate({ dateFormat: 'T' });
+		   $(tabId+ " .txt_num_pasajeros").wijinputnumber( 
+			{
+				type: 'numeric',
+				minValue: -100,
+				maxValue: 10000,
+				
+				showSpinner: true
+			});
+			 $(tabId+ " .txtCosto").wijinputnumber( 
+			{
+				type: 'currency',				
+				decimalPlaces: 2,
+				showSpinner: true
+			});
+			
+		
 		//Para identificar el contenido del tab
 		//var objId='pedidoi_id_'+pedidoId;								
 		//$('#tabs '+tabId).attr('objId',objId);
@@ -46,7 +63,7 @@ Vuelos.Edicion= function(){
 			fk_origen	: tab.find('.txt_fk_origen').val(),
 			fk_destino	: tab.find('.txt_fk_destino').val(),
 			fecha	: tab.find('.txt_fecha').val(),
-			hora	: tab.find('.txt_hora').val(),
+			hora	: tab.find('.txtHora').val(),
 			costo	: tab.find('.txtCosto').val(),
 			numVuelo: tab.find('.txtNumVuelo').val(),
 			num_pasajeros	: tab.find('.txt_num_pasajeros').val()			

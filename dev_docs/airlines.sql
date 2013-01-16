@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2013-01-15 17:33:48
+Date: 2013-01-15 18:15:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -135,15 +135,19 @@ CREATE TABLE `vuelos` (
   `fk_destino` char(255) NOT NULL,
   `fecha` datetime NOT NULL,
   `asientos_disponibles` int(11) DEFAULT NULL,
-  `numVuelo` int(1) DEFAULT NULL,
+  `numVuelo` int(1) NOT NULL,
   `costo` float(18,2) DEFAULT NULL,
   `asientos_totales` int(11) DEFAULT '40',
   PRIMARY KEY (`id`),
   UNIQUE KEY `numVuelo` (`numVuelo`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vuelos
 -- ----------------------------
-INSERT INTO `vuelos` VALUES ('12', '1', '2', '0000-00-00 00:00:00', '0', '2', '1.00', '40');
-INSERT INTO `vuelos` VALUES ('13', '1', '2', '0000-00-00 00:00:00', '0', '1', '1.00', '40');
+INSERT INTO `vuelos` VALUES ('12', '1', '2', '2013-01-15 18:10:07', '0', '2', '0.00', '40');
+INSERT INTO `vuelos` VALUES ('13', '1', '2', '2013-01-15 00:00:00', '0', '1', '0.00', '40');
+INSERT INTO `vuelos` VALUES ('14', '1', '2', '2013-01-22 01:05:00', '0', '0', '0.00', '40');
+INSERT INTO `vuelos` VALUES ('15', '1', '2', '2013-01-22 01:05:00', '0', '4', '0.00', '40');
+INSERT INTO `vuelos` VALUES ('16', '1', '2', '2013-01-22 01:05:00', '0', '5', '0.00', '40');
+INSERT INTO `vuelos` VALUES ('17', '1', '2', '2001-01-01 00:00:00', '0', '7', '0.00', '40');

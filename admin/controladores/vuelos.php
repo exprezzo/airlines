@@ -17,16 +17,22 @@ class Vuelos extends Controlador{
 		$destRes=$destMod->paginar(0,5000);
 		
 		$vista->destinos=$destRes['rows'];		
+		
+			
+		$fecha=date('Y-d-m');
+		$hora=date('H:i:s');
+		
 		$vista->vuelo=array(
 			'id'=>0,
 			'fk_origen'=>1,
 			'fk_destino'=>2,
-			'fecha'=>1,
-			'hora'=>1,
+			'fecha'=>$fecha,
+			'hora'=>$hora,
 			'costo'=>1,
 			'origen'=>1,
 			'destino'=>1,
-			'numVuelo'=>''
+			'numVuelo'=>'',
+			'asientos_disponibles'=>0
 		);
 		$vista->mostrar($_PETICION->controlador.'/vuelo');
 		
@@ -50,6 +56,18 @@ class Vuelos extends Controlador{
 			// );
 			// echo json_encode($res); exit;
 		// }
+		
+		
+		$date=DateTime::createFromFormat ( 'd/m/Y' , $vuelo['fecha'] );			
+		$fecha=$date->format('d/m/Y');
+		
+		$fecha = $fecha . ' ' . $vuelo['hora'];
+		
+		$date=DateTime::createFromFormat ( 'd/m/Y h:i:s A' , $fecha );			
+		$fecha=$date->format('Y-m-d H:i:s');
+		
+		
+		$vuelo['fecha']=$fecha;
 		$model=$this->getModel();
 		$res = $model->guardar($vuelo);
 		echo json_encode($res);

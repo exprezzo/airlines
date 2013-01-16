@@ -108,14 +108,14 @@ padding-top: 12px;
 		<li class="notranslate      ">
 			<label class="desc" >Hora</label>
 			<div>
-				<input name="vuelo[hora]" type="text" class="field text medium" value="<?php echo $vuelo['hora']; ?>" maxlength="255" onkeyup="" />
+				<input name="vuelo[hora]" type="text" class="txtHora field text medium" value="<?php echo $vuelo['hora']; ?>" maxlength="255" onkeyup="" />
 			</div>
 		</li>
 		
 		<li class="notranslate      ">
-			<label class="desc" >Hora</label>
+			<label class="desc" >Num Pasajeros</label>
 			<div>
-				<input name="vuelo[numPasajeros]" type="text" class="txt_num_pasajeros field text medium" value="<?php echo $vuelo['hora']; ?>" maxlength="255" onkeyup="" />
+				<input name="vuelo[numPasajeros]" type="text" class="txt_num_pasajeros field text medium" value="<?php echo $vuelo['asientos_disponibles']; ?>" maxlength="255" onkeyup="" />
 			</div>
 		</li>
 		
