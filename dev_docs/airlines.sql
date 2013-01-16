@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2013-01-14 18:48:57
+Date: 2013-01-15 17:33:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,8 +74,6 @@ CREATE TABLE `reservaciones` (
 -- ----------------------------
 INSERT INTO `reservaciones` VALUES ('71', 'cesar@email.com', '9848034', 'cesar', '251');
 INSERT INTO `reservaciones` VALUES ('72', 'gerardo@email.com', '9801010', 'Gerardo', '252');
-INSERT INTO `reservaciones` VALUES ('73', 'test@email.com', '66778890', 'test', '250');
-INSERT INTO `reservaciones` VALUES ('74', null, '123', 'a', null);
 INSERT INTO `reservaciones` VALUES ('75', null, '123', 'a', null);
 INSERT INTO `reservaciones` VALUES ('76', null, '123', 'b', null);
 INSERT INTO `reservaciones` VALUES ('77', null, '123', 'b', null);
@@ -113,19 +111,19 @@ CREATE TABLE `system_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nick` (`nick`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of system_users
 -- ----------------------------
-INSERT INTO `system_users` VALUES ('zesar1', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'cbibriesca@hotmail.com', '2', null, '1', 'Zesar X', 'pic_1.jpg', 'retro_blue_background.jpg', 'sdfas ad asdasd a dasd ad asd asd asd asd as asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd  as as as dasd sad asd asd asd asd asd asd as', '0', '1', '1', '1', '1355958733');
-INSERT INTO `system_users` VALUES ('cesarx', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'cesar@correo.com', '1', null, '2', '0', null, null, 'asdf', '1', '1', '1', '1', null);
-INSERT INTO `system_users` VALUES ('asdfasdf', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'asd@asd.com', '1', null, '3', '0', null, null, 'asdf', '1', '1', '1', '1', null);
-INSERT INTO `system_users` VALUES ('', 0x88C6F87C8E0DFFBA20CA68680FA1311A, '', '1', null, '4', '0', null, null, 'asfd', '1', '1', '1', '1', '1355891612');
-INSERT INTO `system_users` VALUES ('username', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'asdf@sadf.com', '1', null, '5', 'name', null, null, 'asdf', '1', '1', '1', '1', null);
-INSERT INTO `system_users` VALUES ('zesar2', 0x88C6F87C8E0DFFBA20CA68680FA1311A, 'zesar2@test.com', '1', null, '6', 'Zesar 2', null, null, null, '1', '1', '1', '0', null);
-INSERT INTO `system_users` VALUES ('fouser', 0x27BE5E2F67AD42313ECEF2FD0CCCFBAB, 'userx2@email.com', '1', null, '10', '0', null, null, null, '1', '1', '1', '0', null);
-INSERT INTO `system_users` VALUES ('TEST', 0xD4D3EDF12F5E066B347360AE1A957C13, 'test@test.com', '1', null, '12', '0', null, null, null, '1', '1', '1', '0', null);
+INSERT INTO `system_users` VALUES ('zesar1', 0xB12B642CA9534998F1768E82E35016B9, 'cbibriesca@hotmail.com', '2', null, '1', 'Zesar X', 'pic_1.jpg', 'retro_blue_background.jpg', 'sdfas ad asdasd a dasd ad asd asd asd asd as asd asd asd asd asd asd asd asd asd asd asd asd asd asd asd  as as as dasd sad asd asd asd asd asd asd as', '0', '1', '1', '1', '1355958733');
+INSERT INTO `system_users` VALUES ('cesarx', 0xB12B642CA9534998F1768E82E35016B9, 'cesar@correo.com', '1', null, '2', '0', null, null, 'asdf', '1', '1', '1', '1', null);
+INSERT INTO `system_users` VALUES ('asdfasdf', 0xB12B642CA9534998F1768E82E35016B9, 'asd@asd.com', '1', null, '3', '0', null, null, 'asdf', '1', '1', '1', '1', null);
+INSERT INTO `system_users` VALUES ('', 0xB12B642CA9534998F1768E82E35016B9, '', '1', null, '4', '0', null, null, 'asfd', '1', '1', '1', '1', '1355891612');
+INSERT INTO `system_users` VALUES ('username', 0xB12B642CA9534998F1768E82E35016B9, 'asdf@sadf.com', '1', null, '5', 'name', null, null, 'asdf', '1', '1', '1', '1', null);
+INSERT INTO `system_users` VALUES ('zesar2', 0xB12B642CA9534998F1768E82E35016B9, 'zesar2@test.com', '1', null, '6', 'Zesar 2', null, null, null, '1', '1', '1', '0', null);
+INSERT INTO `system_users` VALUES ('fouser', 0xB12B642CA9534998F1768E82E35016B9, 'userx2@email.com', '1', null, '10', '0', null, null, null, '1', '1', '1', '0', null);
+INSERT INTO `system_users` VALUES ('TEST', 0xB12B642CA9534998F1768E82E35016B9, 'test@test.com', '1', null, '12', '0', null, null, null, '1', '1', '1', '0', null);
 
 -- ----------------------------
 -- Table structure for `vuelos`
@@ -137,16 +135,15 @@ CREATE TABLE `vuelos` (
   `fk_destino` char(255) NOT NULL,
   `fecha` datetime NOT NULL,
   `asientos_disponibles` int(11) DEFAULT NULL,
-  `numVuelo` char(255) DEFAULT NULL,
+  `numVuelo` int(1) DEFAULT NULL,
   `costo` float(18,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `asientos_totales` int(11) DEFAULT '40',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `numVuelo` (`numVuelo`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of vuelos
 -- ----------------------------
-INSERT INTO `vuelos` VALUES ('1', '1', '2', '2013-01-10 16:43:17', '20', '250', '1500.00');
-INSERT INTO `vuelos` VALUES ('2', '1', '2', '2013-01-10 16:43:46', '40', '251', '1500.00');
-INSERT INTO `vuelos` VALUES ('3', '1', '2', '2013-01-10 16:50:32', '20', '252', '1500.00');
-INSERT INTO `vuelos` VALUES ('4', '1', '2', '2013-01-11 12:25:00', '50', '253', '1600.00');
-INSERT INTO `vuelos` VALUES ('5', '1', '4', '2013-01-11 12:31:29', '12', '255', '1500.00');
+INSERT INTO `vuelos` VALUES ('12', '1', '2', '0000-00-00 00:00:00', '0', '2', '1.00', '40');
+INSERT INTO `vuelos` VALUES ('13', '1', '2', '0000-00-00 00:00:00', '0', '1', '1.00', '40');
