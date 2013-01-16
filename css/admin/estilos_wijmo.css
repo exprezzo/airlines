@@ -1,3 +1,6 @@
+.colNumero{
+	text-align:right;
+}
 
 .frmPedido{ position:relative; }
 .frmPedido .pnlEdicionArticulo{ position:absolute; visibility:hidden; }
@@ -23,6 +26,8 @@ ul.ui-tabs-nav li a { padding-top: 14px !important; padding-left: 38px !importan
 ul.ui-tabs-nav li a.listaReservaciones{ background-image:url('/images/admin/token_light_iconpack/htc_touch.png'); }
 ul.ui-tabs-nav li a.listaDestinos{ background-image:url('/images/admin/token_light_iconpack/avira.png'); }
 ul.ui-tabs-nav li a.listaVuelos{ background-image:url('/images/admin/token_light_iconpack/airplane.png'); }
+ul.ui-tabs-nav li a.frmVuelo{ background-image:url('/images/admin/token_light_iconpack/airplane.png'); }
+
 ul.ui-tabs-nav li a.welcome{ background-image:url('/images/admin/home.png'); }
 
 

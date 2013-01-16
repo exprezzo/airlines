@@ -112,15 +112,15 @@ padding-top: 12px;
 			</div>
 		</li>
 		
-		<li class="notranslate      ">
+		<!--li class="notranslate      ">
 			<label class="desc" >Num Pasajeros</label>
 			<div>
-				<input name="vuelo[numPasajeros]" type="text" class="txt_num_pasajeros field text medium" value="<?php echo $vuelo['asientos_disponibles']; ?>" maxlength="255" onkeyup="" />
+				<input name="vuelo[numPasajeros]" type="text" class="txt_num_pasajeros field text medium" value="<?php //echo $vuelo['asientos_disponibles']; ?>" maxlength="255" onkeyup="" />
 			</div>
-		</li>
+		</li-->
 		
 		<li class="notranslate      ">
-			<label class="desc" >Costo</label>
+			<label class="desc" >Precio U</label>
 			<div>
 				<input name="vuelo[costo]" type="text" class="txtCosto field text medium" value="<?php echo $vuelo['costo']; ?>" maxlength="255" onkeyup="" />
 			</div>

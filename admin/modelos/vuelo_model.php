@@ -9,7 +9,7 @@ class VueloModel extends Modelo_PDO{
 		$fecha=$params['fecha'];
 		$costo=$params['costo'];
 		$numVuelo=$params['numVuelo'];
-		$asientos_disponibles=empty($params['asientos_disponibles'])? 0 : $params['asientos_disponibles'];
+		//$asientos_disponibles=empty($params['asientos_disponibles'])? 0 : $params['asientos_disponibles'];
 		$fk_origen=$params['fk_origen'];
 		$fk_destino=$params['fk_destino'];		
 		
@@ -18,8 +18,7 @@ class VueloModel extends Modelo_PDO{
 			$sql='INSERT INTO '.$this->tabla.' SET 
 			fecha=:fecha,
 			 costo=:costo,
-			 numVuelo=:numVuelo,
-			 asientos_disponibles=:asientos_disponibles,
+			 numVuelo=:numVuelo,			
 			 fk_origen=:fk_origen,
 			 fk_destino=:fk_destino';			
 			$sth = $dbh->prepare($sql);							
@@ -27,7 +26,7 @@ class VueloModel extends Modelo_PDO{
 			$sth->bindValue(":fecha",$fecha,PDO::PARAM_STR);					
 			$sth->bindValue(":costo",$costo,PDO::PARAM_INT);					
 			$sth->bindValue(":numVuelo",$numVuelo,PDO::PARAM_STR);					
-			$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
+			//$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_origen",$fk_origen,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_destino",$fk_destino,PDO::PARAM_INT);					
 			$exito = $sth->execute();
@@ -36,15 +35,14 @@ class VueloModel extends Modelo_PDO{
 			//	         ACTUALIZAR
 			$sql='UPDATE '.$this->tabla.' SET 
 			fecha=:fecha,
-			 costo=:costo,			 
-			 asientos_disponibles=:asientos_disponibles,
+			 costo=:costo,			 			
 			 fk_origen=:fk_origen,
 			 fk_destino=:fk_destino WHERE id=:id';			
 			$sth = $dbh->prepare($sql);										
 			$sth->bindValue(":fecha",$fecha,PDO::PARAM_STR);
 			$sth->bindValue(":costo",$costo,PDO::PARAM_INT);					
 			//$sth->bindValue(":numVuelo",$numVuelo,PDO::PARAM_INT);					
-			$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
+			//$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_origen",$fk_origen,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_destino",$fk_destino,PDO::PARAM_INT);			
 			$sth->bindValue(":id",$id,PDO::PARAM_INT);					

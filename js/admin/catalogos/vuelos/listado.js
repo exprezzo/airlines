@@ -123,7 +123,7 @@
 			{dataKey: "destino", headerText: "Destino" },
 			{dataKey: "fecha", headerText: "Fecha" },
 			{dataKey: "costo", headerText: "Precio U" },
-			{dataKey: "asientos_disponibles", headerText: "asientos_disponibles" }
+			{dataKey: "asientos_disponibles", headerText: "asientos_disponibles",visible:false }
 			
 			
 			],
@@ -141,6 +141,10 @@
 					// console.log(args);		
 					args.$cell.addClass("colFecha");
 				}			
+				if (args.column._originalDataKey=='costo' || args.column._originalDataKey=='asientos_disponibles' ){
+					// console.log(args);		
+					args.$cell.addClass("colNumero");
+				}
 			} 
 		});
 		

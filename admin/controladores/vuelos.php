@@ -67,6 +67,10 @@ class Vuelos extends Controlador{
 		$fecha=$date->format('Y-m-d H:i:s');
 		
 		
+		$costo = str_replace ( '$' , '' , $vuelo['costo'] );
+		$costo = str_replace ( ',' , '' , $costo );
+		 
+		$vuelo['costo']=$costo;
 		$vuelo['fecha']=$fecha;
 		$model=$this->getModel();
 		$res = $model->guardar($vuelo);

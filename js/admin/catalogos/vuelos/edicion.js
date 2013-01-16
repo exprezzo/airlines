@@ -38,7 +38,8 @@ Vuelos.Edicion= function(){
 		
 		//Establecer titulo e icono
 		if (id>0){
-			$('a[href="'+tabId+'"]').html('Vuelo - Id'+id);		
+			var numVuelo =$(tabId+' .txtNumVuelo').val();
+			$('a[href="'+tabId+'"]').html('Vuelo '+numVuelo);		
 		}else{
 			$('a[href="'+tabId+'"]').html('Nuevo Vuelo');
 		}
