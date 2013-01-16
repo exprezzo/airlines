@@ -36,15 +36,14 @@ class VueloModel extends Modelo_PDO{
 			//	         ACTUALIZAR
 			$sql='UPDATE '.$this->tabla.' SET 
 			fecha=:fecha,
-			 costo=:costo,
-			 numVuelo=:numVuelo,
+			 costo=:costo,			 
 			 asientos_disponibles=:asientos_disponibles,
 			 fk_origen=:fk_origen,
 			 fk_destino=:fk_destino WHERE id=:id';			
 			$sth = $dbh->prepare($sql);										
 			$sth->bindValue(":fecha",$fecha,PDO::PARAM_STR);
 			$sth->bindValue(":costo",$costo,PDO::PARAM_INT);					
-			$sth->bindValue(":numVuelo",$numVuelo,PDO::PARAM_INT);					
+			//$sth->bindValue(":numVuelo",$numVuelo,PDO::PARAM_INT);					
 			$sth->bindValue(":asientos_disponibles",$asientos_disponibles,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_origen",$fk_origen,PDO::PARAM_INT);					
 			$sth->bindValue(":fk_destino",$fk_destino,PDO::PARAM_INT);			
